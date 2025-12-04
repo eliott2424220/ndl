@@ -1,6 +1,6 @@
 package com.noid.backend;
 
-public class Questions {
+public class Question {
 
     public void setQuestion(String question) {
         this.question = question;
@@ -8,7 +8,7 @@ public class Questions {
     private String question;
     private Choice[] choices;
 
-    public Questions(String question, Choice[] choices) {
+    public Question(String question, Choice[] choices) {
         this.question = question;
         this.choices = choices;
     }
@@ -25,5 +25,9 @@ public class Questions {
 
     public void setChoices(Choice[] choices) {
         this.choices = choices;
+    }
+
+    public void setChoiceIndex(int index,Choice reponse) {
+        this.choices[index] = reponse;
     }
 }

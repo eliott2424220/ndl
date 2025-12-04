@@ -1,22 +1,23 @@
 package com.noid.backend; // même package que NoIdApplication
 
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/api")
 public class Routers {
+    private final BagOfQuestions bagOfQuestions = new BagOfQuestions();
+
     @GetMapping("/get/questions")
-    public String getQuestions() {
-        return "Hello Spring Boot!";
+    public Question getQuestions(@RequestParam int id) {
+        return bagOfQuestions.getQuestion(id);
     }
     @PostMapping("/post/questions")
-    public String postQuestions() {
-        return "Hello Spring Boot!";
+    public void postQuestions(@RequestBody Question questions) {
+        bagOfQuestions.addQuestion(questions);
     }
     @DeleteMapping("/delete/questions")
-    public String deleteQuestions() {
-        return "Hello Spring Boot!";
+    public int deleteQuestions(@RequestParam int id) {
+        return bagOfQuestions.removeQuestion(id);
     }
+
 }
